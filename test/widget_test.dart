@@ -11,5 +11,5 @@
 // import 'package:status_saver/main.dart';
 
 void main() {
-  //TODO: just vibes for now
+  //TODO: just vibes for now😭
 }
