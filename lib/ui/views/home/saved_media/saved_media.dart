@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:status_saver/ui/saved_media/saved_photos.dart';
-import 'package:status_saver/ui/saved_media/saved_videos.dart';
+import 'package:status_saver/ui/views/home/saved_media/saved_photos.dart';
+import 'package:status_saver/ui/views/home/saved_media/saved_videos.dart';
 
 class SavedMedia extends StatefulWidget {
   SavedMedia({Key key,}) : super(key: key);

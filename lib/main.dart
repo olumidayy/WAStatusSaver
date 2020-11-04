@@ -1,21 +1,17 @@
-// import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:status_saver/ui/photos/photos.dart';
-import 'package:status_saver/ui/videos/videos.dart';
+import 'package:status_saver/ui/views/home/photos/photos.dart';
+import 'package:status_saver/ui/views/home/videos/videos.dart';
+import 'package:status_saver/ui/widgets/widgets.dart';
 
 import 'core/view_models/media_model.dart';
-import 'ui/saved_media/saved_media.dart';
+import 'ui/views/home/saved_media/saved_media.dart';
 import 'ui/splash_screen/splash_screen.dart';
 
 void main() {
-  // runApp(DevicePreview(
-  //   enabled: !kReleaseMode,
-  //   builder: (context) => MyApp(),
-  // ));
   runApp(MyApp());
 }
 
@@ -30,15 +26,10 @@ class MyApp extends StatelessWidget {
         curve: Curves.bounceInOut,
         locale: const Locale('en', 'US'),
         child: MaterialApp(
-          // locale: DevicePreview.of(context).locale,
-          // builder: DevicePreview.appBuilder,
           debugShowCheckedModeBanner: false,
           title: 'Status Saver',
           theme: ThemeData(
             primaryColor: Colors.blueGrey[900],
-            textTheme: GoogleFonts.ralewayTextTheme(
-              Theme.of(context).textTheme,
-            ),
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
           home: SplashScreen(),
@@ -73,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
     var model = context.watch<MediaModel>();
     return SafeArea(
       child: Scaffold(
-        drawer: _buildDrawer(model),
+        drawer: buildDrawer(model, context),
         backgroundColor: Colors.blueGrey[900],
         body: NestedScrollView(
           headerSliverBuilder:
@@ -104,51 +95,5 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
-  }
-
-  Widget _buildDrawer(model) {
-    return Drawer(
-        child: Container(
-      color: Color(0xFF053D45),
-      child: ListView(
-        children: [
-          DrawerHeader(
-              child: Container(
-            child: Center(child: Image.asset('assets/icon.png')),
-          )),
-          Divider(color: Colors.white30, thickness: 1),
-          InkWell(
-            child: ListTile(
-                title: Text('WhatsApp Statuses',
-                    style: TextStyle(color: Colors.white))),
-            onTap: () {
-              Navigator.pop(context);
-              model.setPath('wa');
-            },
-          ),
-          Divider(color: Colors.white60, thickness: 1),
-          InkWell(
-            child: ListTile(
-                title: Text('Business WhatsApp Statuses',
-                    style: TextStyle(color: Colors.white))),
-            onTap: () {
-              Navigator.pop(context);
-              model.setPath('business');
-            },
-          ),
-          Divider(color: Colors.white60, thickness: 1),
-          InkWell(
-            child: ListTile(
-                title: Text('GBWhatsApp Statuses',
-                    style: TextStyle(color: Colors.white))),
-            onTap: () {
-              Navigator.pop(context);
-              model.setPath('gb');
-            },
-          ),
-          Divider(color: Colors.white60, thickness: 1),
-        ],
-      ),
-    ));
   }
 }

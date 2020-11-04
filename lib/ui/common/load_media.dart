@@ -8,8 +8,8 @@ import 'package:provider/provider.dart';
 import 'package:status_saver/core/enums/enums.dart';
 import 'package:status_saver/core/view_models/media_model.dart';
 import 'package:status_saver/core/services/services.dart';
-import 'package:status_saver/ui/photo_view/photo_view.dart';
-import 'package:status_saver/ui/video_play/video_play.dart';
+import 'package:status_saver/ui/views/photo_view/photo_view.dart';
+import 'package:status_saver/ui/views/video_play/video_play.dart';
 
 
 class LoadMedia extends StatefulWidget {
