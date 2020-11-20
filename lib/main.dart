@@ -9,7 +9,7 @@ import 'package:status_saver/ui/widgets/widgets.dart';
 
 import 'core/view_models/media_model.dart';
 import 'ui/views/home/saved_media/saved_media.dart';
-import 'ui/splash_screen/splash_screen.dart';
+import 'ui/views/splash_screen/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
