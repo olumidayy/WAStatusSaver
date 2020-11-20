@@ -106,7 +106,7 @@ class _LoadMediaState extends State<LoadMedia> {
                                                               ))),
                                                     );
                                             }),
-                                    tag: mediaList[index].toString(),
+                                    tag: mediaList[index].path,
                                   ),
                                   onTap: () => Navigator.push(
                                         context,
