@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -105,7 +106,7 @@ class _LoadMediaState extends State<LoadMedia> {
                                                               ))),
                                                     );
                                             }),
-                                    tag: mediaList[index].path,
+                                    tag: mediaList[index].toString(),
                                   ),
                                   onTap: () => Navigator.push(
                                         context,

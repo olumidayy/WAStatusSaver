@@ -19,13 +19,17 @@ class MediaModel extends ChangeNotifier {
 
   static const savePath = '/storage/emulated/0/WAStatusSaver';
 
-  List<File> get photos => _fetchPhotos(_currentPath);
+  List<File> get photos => _fetchMedia(_currentPath);
 
-  List<File> get videos => _fetchVideos(_currentPath);
+  List<File> get videos => _fetchMedia(_currentPath, images: false);
 
-  List<File> get savedPhotos => _fetchPhotos(savePath);
+  List<File> get savedPhotos => _fetchMedia(savePath);
 
-  List<File> get savedVideos => _fetchVideos(savePath);
+  List<File> get savedVideos => _fetchMedia(savePath, images: false);
+
+  setState(){
+    notifyListeners();
+  }
 
   void setPath(String arg) {
     switch (arg) {
@@ -65,12 +69,12 @@ class MediaModel extends ChangeNotifier {
     }
   }
 
-  List<File> _fetchPhotos(String path) {
+  List<File> _fetchMedia(String path, {bool images = true}) {
     List<File> photos;
     try {
       photos = Directory(path)
           .listSync()
-          .where((item) => item.path.endsWith('jpg'))
+          .where((item) => item.path.endsWith(images ? 'jpg' : 'mp4'))
           .map((e) => (e as File))
           .toList();
       photos
@@ -83,21 +87,6 @@ class MediaModel extends ChangeNotifier {
     return photos;
   }
 
-  List<File> _fetchVideos(String path) {
-    List<File> videos;
-    try {
-      videos = Directory(path)
-          .listSync()
-          .where((item) => item.path.endsWith('mp4'))
-          .map((e) => (e as File))
-          .toList();
-      videos
-          .sort((a, b) => b.lastModifiedSync().compareTo(a.lastModifiedSync()));
-    } catch (e) {
-      videos = [];
-    }
-    return videos;
-  }
 
   Future<Uint8List> fetchVidThumbnail(String path) async {
     final thumbnail = await VideoThumbnail.thumbnailData(

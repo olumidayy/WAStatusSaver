@@ -53,6 +53,8 @@ class _VideoPlayerState extends State<VideoPlayer> {
       Share.shareFiles([vidPath]);
     }
 
+    model.setState();
+
     return Scaffold(
       backgroundColor: Colors.black,
       body: GestureDetector(

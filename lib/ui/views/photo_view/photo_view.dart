@@ -7,9 +7,8 @@ import 'package:share/share.dart';
 import 'package:status_saver/core/enums/enums.dart';
 import 'package:status_saver/core/view_models/media_model.dart';
 
-
 class PhotoView extends StatefulWidget {
-  final FileSystemEntity file;
+  final File file;
 
   final int index;
 
@@ -42,12 +41,14 @@ class _PhotoViewState extends State<PhotoView> {
 
     _shareFile() {
       String imgPath = photos[_controller.page.floor()].path;
-      Share.shareFiles([ imgPath ]);
+      Share.shareFiles([imgPath]);
     }
 
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(backgroundColor: Colors.transparent,),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       body: SafeArea(
         child: PageView.builder(
           controller: _controller,
@@ -68,27 +69,46 @@ class _PhotoViewState extends State<PhotoView> {
         ),
       ),
       floatingActionButton: widget.mediaClass == MediaClass.saved
-          ? FloatingActionButton(
-            backgroundColor: Colors.red[600],
-            onPressed: () async => await model.deleteFile(context, widget.file),
-            child: Icon(Icons.delete),
-          )
+          ? Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+              FloatingActionButton(
+                backgroundColor: Colors.blueGrey[900],
+                mini: true,
+                heroTag: 'Share',
+                child: Icon(
+                  Icons.share,
+                  size: 19,
+                ),
+                onPressed: _shareFile,
+              ),
+              SizedBox(height: 10),
+              FloatingActionButton(
+                backgroundColor: Colors.red[600],
+                onPressed: () async =>
+                    await model.deleteFile(context, widget.file),
+                child: Icon(Icons.delete),
+              )
+            ])
           : Column(mainAxisAlignment: MainAxisAlignment.end, children: [
               FloatingActionButton(
                 backgroundColor: Colors.blueGrey[900],
                 mini: true,
                 heroTag: 'Share',
-                child: Icon(Icons.share, size: 19,),
+                child: Icon(
+                  Icons.share,
+                  size: 19,
+                ),
                 onPressed: _shareFile,
               ),
               SizedBox(height: 10),
               FloatingActionButton(
                 backgroundColor: Color(0xFF053D45),
-                child: Icon(Icons.save, size: 28,),
+                child: Icon(
+                  Icons.save,
+                  size: 28,
+                ),
                 onPressed: () async {
                   await model.saveFile(photos[_controller.page.floor()]);
-                  showToast(
-                      "File Saved");
+                  showToast("File Saved");
                 },
               )
             ]),

@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:status_saver/ui/views/home/photos/photos.dart';
 import 'package:status_saver/ui/views/home/videos/videos.dart';
@@ -16,7 +15,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<MediaModel>(
@@ -72,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
             SliverAppBar(
               expandedHeight: 60,
               centerTitle: true,
-              title: Text(widget.title, style: GoogleFonts.raleway(),),
+              title: Text(widget.title,),
               backgroundColor: Color(0xFF053D45),
               elevation: 3,
               floating: true,

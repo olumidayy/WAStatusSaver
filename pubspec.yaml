@@ -36,8 +36,6 @@ dependencies:
   flick_video_player: any
   video_thumbnail: 
 
-  google_fonts: ^1.1.1
-
   provider:
 
   flutter_styled_toast: ^1.4.0+1
