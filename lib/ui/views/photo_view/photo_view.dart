@@ -59,7 +59,12 @@ class _PhotoViewState extends State<PhotoView> {
                 child: Container(
                   child: GestureDetector(
                     onVerticalDragEnd: _handleDrag,
-                    child: Image.file(photos[position], fit: BoxFit.contain),
+                    child: InteractiveViewer(
+                      boundaryMargin: EdgeInsets.all(20.0),
+                      minScale: 0.5,
+                      maxScale: 5.0,
+                      child: Image.file(photos[position], fit: BoxFit.contain),
+                    )
                   ),
                 ),
               ),
