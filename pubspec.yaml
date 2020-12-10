@@ -31,10 +31,10 @@ dependencies:
   share:
 
   flutter_staggered_animations:
-
   image_gallery_saver: '^1.6.0'
-  flick_video_player: any
-  video_thumbnail: 
+  flick_video_player: ^0.1.1
+  video_thumbnail: ^0.2.5
+  google_fonts: ^1.1.1
 
   provider:
 

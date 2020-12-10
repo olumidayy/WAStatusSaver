@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:status_saver/ui/views/home/photos/photos.dart';
 import 'package:status_saver/ui/views/home/videos/videos.dart';
@@ -30,6 +31,9 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primaryColor: Colors.blueGrey[900],
             visualDensity: VisualDensity.adaptivePlatformDensity,
+            textTheme: GoogleFonts.ralewayTextTheme(
+              Theme.of(context).textTheme,
+            ),
           ),
           home: SplashScreen(),
         ),
@@ -80,6 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
           body: _views[_currentIndex],
         ),
         bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Color(0xFF053D45),
           currentIndex: _currentIndex,
           showUnselectedLabels: false,
           onTap: _setIndex,
@@ -90,7 +95,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: Icon(Icons.video_collection_rounded), label: 'Videos'),
             BottomNavigationBarItem(icon: Icon(Icons.save_alt), label: 'Saved'),
           ],
-          selectedItemColor: Colors.blueGrey[900],
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white.withOpacity(0.45),
         ),
       ),
     );

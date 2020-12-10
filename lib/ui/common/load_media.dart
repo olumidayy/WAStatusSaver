@@ -23,7 +23,19 @@ class LoadMedia extends StatefulWidget {
   _LoadMediaState createState() => _LoadMediaState();
 }
 
-class _LoadMediaState extends State<LoadMedia> {
+class _LoadMediaState extends State<LoadMedia> with SingleTickerProviderStateMixin {
+  AnimationController _animationController;
+  Animation _colorTween;
+
+  @override
+  void initState() {
+    _animationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+    _colorTween = ColorTween(begin: Colors.white, end: Colors.white)
+        .animate(_animationController);
+
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     var model = context.watch<MediaModel>();
@@ -147,7 +159,7 @@ class _LoadMediaState extends State<LoadMedia> {
                 )
               ]));
         }
-        return Center(child: CircularProgressIndicator());
+        return Center(child: CircularProgressIndicator(valueColor: _colorTween,));
       },
     );
   }
