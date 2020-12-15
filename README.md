@@ -1,5 +1,5 @@
 
-# WAStatusSaver
+# WhatsApp-StatusSaver
 ---------------
 
 A simple mobile application to help save WhatsApp statuses.
