@@ -42,7 +42,8 @@ class _SplashScreenState extends State<SplashScreen> {
         Column(
           children: [
             Image.asset('assets/icon.png', height: 130,), 
-            Text('Status Saver', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),)
+            Text('Status Saver', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+            SizedBox(height: 70),
           ],
         ),
       ])),
